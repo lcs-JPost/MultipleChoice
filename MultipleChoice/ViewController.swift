@@ -11,18 +11,30 @@ import UIKit
 class ViewController: UIViewController {
     
     
-// Mark: Properties
+    // Mark: Properties
     @IBOutlet weak var NumberOfQuestions: UITextField!
     @IBOutlet weak var StudentInput: UITextField!
     @IBOutlet weak var correctInput: UITextField!
     @IBOutlet weak var output: UITextView!
+    // Mark: Intializers
     
+    
+    // Mark: Methods
+    
+    
+    // Mark: Actions
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
     // begin the process
     @IBAction func Compare(_ sender: Any) {
+        // Reset the output label from previous usage
+        output.text = ""
+        // Creating a variable for the correct Questions
+        var correctQuestions = 0
+        // Reset the Number of correct Questions from previous usage
+        correctQuestions = 0
         // protect the first input
         guard let QuestionNumber = NumberOfQuestions.text, QuestionNumber.count > 0 else {
             output.text = "Please enter an Integer greater than 0"
@@ -35,11 +47,11 @@ class ViewController: UIViewController {
         }
         // protect the third input
         guard let InputCorrect = correctInput.text, InputCorrect.count > 0 else {
-              output.text = "Please make sure all the correct answers are given"
+            output.text = "Please make sure all the correct answers are given"
             return
         }
         var index = studentAnswer.index(studentAnswer.startIndex, offsetBy: 0)
-        var correctQuestions = 0
+        
         // compare the students with the correct answer
         for (position, character) in InputCorrect.enumerated() {
             print(position)
