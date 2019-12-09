@@ -50,21 +50,34 @@ class ViewController: UIViewController {
             output.text = "Please make sure all the correct answers are given"
             return
         }
+        // create an Int constant for the first input
+        let QuestionNumberInt = Int(QuestionNumber)
+        // Create an index variable for later use
         var index = studentAnswer.index(studentAnswer.startIndex, offsetBy: 0)
-        
-        // compare the students with the correct answer
-        for (position, character) in InputCorrect.enumerated() {
-            print(position)
-            print(character)
-            index = studentAnswer.index(studentAnswer.startIndex, offsetBy: position)
-            if character == studentAnswer[index] {
-                correctQuestions += 1
+        // create an if statement to compare the entered number of questions with the acctual number of student questions
+        if studentAnswer.count == QuestionNumberInt {
+            // use an if statement in an if statement to compare the entered number of questions to the acctual Number of correct questions
+            if QuestionNumberInt == InputCorrect.count {
+                // use a loop to compare every student answer with the correct answer
+                for (position, character) in InputCorrect.enumerated() {
+                    print(position)
+                    print(character)
+                    index = studentAnswer.index(studentAnswer.startIndex, offsetBy: position)
+                    if character == studentAnswer[index] {
+                        correctQuestions += 1
+                    } else {
+                        break
+                    }
+                }
+                output.text = "The number of correct questions is \(correctQuestions)"
+                
             } else {
-                break
+                output.text = "Please enter exactly \(QuestionNumber) correct answers"
             }
+        } else {
+            output.text = "Please enter exactly \(QuestionNumber) student answers"
         }
-        output.text = "The number of correct questions is \(correctQuestions)"
+        
     }
     
 }
-
