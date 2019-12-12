@@ -69,12 +69,15 @@ class ViewController: UIViewController {
                         break
                     }
                 }
+                // project the solution on the output label
                 output.text = "The number of correct questions is \(correctQuestions)"
                 
             } else {
+                // ask the user to correct his input through the output label
                 output.text = "Please enter exactly \(QuestionNumber) correct answers"
             }
         } else {
+            // ask the user to correct the input through the output label
             output.text = "Please enter exactly \(QuestionNumber) student answers"
         }
         
